@@ -1,10 +1,9 @@
-"use client"
+'use client';
 import * as React from 'react';
 
 import { PaginationProvider } from '@/hooks/PaginationContext';
 
-import CharacterList from '@/components/CharacterList';
-
+import CharacterList from '@/app/components/CharcterCard/CharacterList';
 
 export default function HomePage() {
   return (

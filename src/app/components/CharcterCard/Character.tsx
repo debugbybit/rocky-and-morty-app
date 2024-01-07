@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { item } from './stateTypes/characterTypes';
+import { item } from '../stateTypes/characterTypes';
 
 interface ICharacterProps {
   item: item;
