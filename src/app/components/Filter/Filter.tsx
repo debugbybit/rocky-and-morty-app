@@ -25,7 +25,7 @@ const Filter: React.FC<FilterProps> = ({
     updateGender('');
     updateSpecies('');
     updatePageNumber(1);
-    window.location.reload(0);
+    window.location.reload();
   };
 
   return (
