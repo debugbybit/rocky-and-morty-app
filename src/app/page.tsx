@@ -1,11 +1,17 @@
 "use client"
-import Image from "next/image";
-import CharacterList from "@/component/CharacterList";
+import * as React from 'react';
 
-export default function Home() {
+import { PaginationProvider } from '@/hooks/PaginationContext';
+
+import CharacterList from '@/components/CharacterList';
+
+
+export default function HomePage() {
   return (
-    <main>
-      <CharacterList />
-    </main>
+    <PaginationProvider>
+      <div>
+        <CharacterList />
+      </div>
+    </PaginationProvider>
   );
 }

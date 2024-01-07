@@ -1,23 +1,41 @@
-/** @jsxImportSource @emotion/react @use-client */
-import { useState, useEffect } from "react";
+// useFetch.tsx
+import { SetStateAction, useEffect, useState } from 'react';
 
-export default function useFetch(url:string) {
-  const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+interface ApiResponse {
+  info?: {
+    pages: number;
+  };
+  loading: boolean;
+  results: any[];
+}
+
+const useFetch = (url: string) => {
+  const [data, setData] = useState<ApiResponse>({
+    loading: true,
+    info: { pages: 0 },
+    results: [],
+  });
 
   useEffect(() => {
-    fetch(`${url}?page=${page}`)
+    fetch(`${url}`)
       .then((response) => response.json())
-      .then((json) => {
-        setCharacters(json.results);
+      .then((json: ApiResponse) => {
+        setData({
+          ...json,
+          loading: false,
+        });
       })
       .finally(() => {
         setTimeout(() => {
-          setLoading(false);
+          setData((prevData) => ({
+            ...prevData,
+            loading: false,
+          }));
         }, 2000);
       });
-  }, [page]);
+  }, [url]);
 
-  return { characters, loading, page, setPage };
-}
+  return data;
+};
+
+export default useFetch;
