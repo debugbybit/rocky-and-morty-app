@@ -1,7 +1,6 @@
 # React Rick and Morty
 
-
-Replace `[![Watch the video demo]](https://photos.onedrive.com/photo/F1303522D38753CE!279867?view=all)` 
+https://github.com/debugbybit/rocky-and-morty-app/assets/67644782/2e574db4-7bb7-4bb5-a231-2884601e6042
 
 ## Description
 
