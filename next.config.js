@@ -18,6 +18,7 @@ const nextConfig = {
 
     return config;
   },
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
 };
 
 module.exports = nextConfig;

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 import { usePagination } from '@/hooks/PaginationContext';
@@ -35,24 +34,7 @@ const CharacterList: React.FC = () => {
   return (
     <div className='container mx-auto mt-8 p-4'>
       <div className='mb-8 flex flex-col items-center md:flex-row justify-between'>
-        <div className='mb-4 md:mb-0 md:mr-4 flex items-center'>
-          <div className='mr-4'>
-            <Image
-              src='/images/ricky-morty-logo.png'
-              alt='Logo'
-              width={100}
-              height={100}
-            />
-          </div>
-          <div>
-            <Image
-              src='/images/ricky-morty-logo-text.png'
-              alt='Logo'
-              width={200}
-              height={50}
-            />
-          </div>
-        </div>
+        
         <div className='flex items-center justify-center md:justify-end w-full'>
           <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
         </div>

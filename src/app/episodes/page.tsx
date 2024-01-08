@@ -3,17 +3,15 @@ import * as React from 'react';
 
 import { PaginationProvider } from '@/hooks/PaginationContext';
 
-import CharacterList from '@/app/components/CharcterCard/CharacterList';
+import Episodes from '../components/EpisodeList';
+import Navbar from '../components/Navbar';
 
-import Navbar from './components/Navbar';
-
-
-export default function HomePage() {
+export default function EpisodePage() {
   return (
     <PaginationProvider>
       <Navbar />
       <div>
-        <CharacterList />
+        <Episodes />
       </div>
     </PaginationProvider>
   );
