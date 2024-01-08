@@ -1,5 +1,4 @@
 import IconButton from '@mui/material/IconButton';
-import Toolbar from '@mui/material/Toolbar';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -18,7 +17,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <Toolbar className='container mx-auto flex items-center justify-between bg-gray-800'>
+    <div className='container mx-auto flex items-center justify-between bg-gray-800 p-4'>
       <div className='flex items-center'>
         <div className='mr-4'>
           <Image
@@ -38,17 +37,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      <ul className='hidden space-x-4 md:flex'>
-        {links.map(({ id, link, title }) => (
-          <li
-            key={id}
-            className='nav-links text-gray-300 transition duration-300 hover:text-white transform hover:scale-105'
-          >
-            <Link href={link}>{title}</Link>
-          </li>
-        ))}
-      </ul>
-
       <IconButton
         edge='start'
         color='inherit'
@@ -59,9 +47,9 @@ const Navbar: React.FC = () => {
         {isMobileMenuOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
       </IconButton>
 
-      {isMobileMenuOpen && (
+      {isMobileMenuOpen ? (
         <ul
-          className={`absolute right-0 top-16 z-10 flex h-screen w-full transform flex-col items-end bg-gray-800 transition-transform ${
+          className={`absolute right-0 top-0 z-10 flex flex-col items-end bg-gray-800 w-full transform transition-transform ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -85,8 +73,19 @@ const Navbar: React.FC = () => {
             </li>
           ))}
         </ul>
+      ) : (
+        <ul className='hidden md:flex space-x-4'>
+          {links.map(({ id, link, title }) => (
+            <li
+              key={id}
+              className='nav-links text-gray-300 transition duration-300 hover:text-white hover:scale-105'
+            >
+              <Link href={link}>{title}</Link>
+            </li>
+          ))}
+        </ul>
       )}
-    </Toolbar>
+    </div>
   );
 };
 

@@ -6,11 +6,17 @@ interface InputGroupProps {
   name: string;
   changeID: (value: number) => void;
   total: number;
+  selectedValue: number;
 }
 
-const InputGroup: React.FC<InputGroupProps> = ({ name, changeID, total }) => {
+const InputGroup: React.FC<InputGroupProps> = ({
+  name,
+  changeID,
+  total,
+  selectedValue: initialSelectedValue, // Use initialSelectedValue as prop
+}) => {
   const [expanded, setExpanded] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('1');
+  const [selectedValue, setSelectedValue] = useState(initialSelectedValue);
   const collapseRef = useRef<HTMLDivElement>(null);
 
   const handleItemClick = (value: string) => {
@@ -36,6 +42,11 @@ const InputGroup: React.FC<InputGroupProps> = ({ name, changeID, total }) => {
     };
   }, []);
 
+  useEffect(() => {
+    // Update selectedValue when total changes
+    setSelectedValue(initialSelectedValue);
+  }, [total, initialSelectedValue]);
+
   return (
     <div className='relative mb-3'>
       <label className='text-sm font-medium text-gray-700'>{name}</label>
@@ -44,7 +55,9 @@ const InputGroup: React.FC<InputGroupProps> = ({ name, changeID, total }) => {
           onClick={() => setExpanded(!expanded)}
           className='group flex w-full items-center justify-between rounded-md border border-gray-300 bg-white p-2 transition-all duration-300 hover:bg-gray-100 focus:border-blue-300 focus:outline-none focus:ring'
         >
-          <span className='truncate'>{name} - {selectedValue}</span>
+          <span className='truncate'>
+            {name} - {`${selectedValue}`}
+          </span>
           <span className='ml-2'>
             {expanded ? (
               <ArrowUp size={16} className='text-gray-700' />
@@ -62,7 +75,7 @@ const InputGroup: React.FC<InputGroupProps> = ({ name, changeID, total }) => {
           <div className='border-t border-gray-300'>
             {Array.from({ length: total }).map((_, index) => (
               <button
-                key={index}
+                key={(index + 1).toString()} // Use a unique identifier for the key
                 onClick={() => handleItemClick((index + 1).toString())}
                 className={`w-full cursor-pointer text-left ${
                   selectedValue === (index + 1).toString()

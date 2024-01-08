@@ -73,7 +73,7 @@ const Episodes: React.FC = () => {
             <div className='mb-2 text-center'>
               <h4 className='text-lg font-semibold'>Pick Episode</h4>
             </div>
-            <InputGroup name='Episode' changeID={setID} total={51} />
+            <InputGroup selectedValue={id} name='Episode' changeID={setID} total={51} />
           </div>
         </div>
       )}
