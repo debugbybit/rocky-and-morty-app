@@ -1,4 +1,4 @@
-export interface item {
+export interface ItemObj {
   id: number;
   image: string;
   name: string;

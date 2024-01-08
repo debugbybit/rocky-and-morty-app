@@ -47,7 +47,7 @@ const CharacterList: React.FC = () => {
             <>
               <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                 {results.map((item: any) => (
-                  <Character item={item} key={item.id} />
+                  <Character page="/" item={item} key={item.id} />
                 ))}
               </div>
               <div className='mt-4 flex justify-center'>

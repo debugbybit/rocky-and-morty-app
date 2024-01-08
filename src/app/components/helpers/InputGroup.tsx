@@ -13,7 +13,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
   name,
   changeID,
   total,
-  selectedValue: initialSelectedValue, // Use initialSelectedValue as prop
+  selectedValue: initialSelectedValue, 
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [selectedValue, setSelectedValue] = useState(initialSelectedValue);
@@ -43,7 +43,6 @@ const InputGroup: React.FC<InputGroupProps> = ({
   }, []);
 
   useEffect(() => {
-    // Update selectedValue when total changes
     setSelectedValue(initialSelectedValue);
   }, [total, initialSelectedValue]);
 
