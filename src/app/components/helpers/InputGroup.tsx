@@ -6,7 +6,7 @@ interface InputGroupProps {
   name: string;
   changeID: (value: number) => void;
   total: number;
-  selectedValue: number;
+  selectedValue: any;
 }
 
 const InputGroup: React.FC<InputGroupProps> = ({
