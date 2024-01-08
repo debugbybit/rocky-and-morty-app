@@ -1,5 +1,5 @@
 import { Collapse } from '@mui/material';
-import React, { useEffect,useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowUp } from 'react-feather';
 
 interface InputGroupProps {
@@ -60,17 +60,17 @@ const InputGroup: React.FC<InputGroupProps> = ({ name, changeID, total }) => {
           className='absolute left-0 top-full z-50 w-full overflow-hidden rounded-md bg-white shadow-md transition-all duration-300'
         >
           <div className='border-t border-gray-300'>
-            {[...Array(total).keys()].map((x, index) => (
+            {Array.from({ length: total }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => handleItemClick((x + 1).toString())}
+                onClick={() => handleItemClick((index + 1).toString())}
                 className={`w-full cursor-pointer text-left ${
-                  selectedValue === (x + 1).toString()
+                  selectedValue === (index + 1).toString()
                     ? 'font-bold text-blue-500'
                     : 'text-gray-700'
                 } truncate p-2 transition-all duration-300 hover:bg-gray-100 focus:outline-none`}
               >
-                {name} - {x + 1}
+                {name} - {index + 1}
               </button>
             ))}
           </div>
