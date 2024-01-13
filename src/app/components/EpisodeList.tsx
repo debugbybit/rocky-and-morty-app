@@ -48,7 +48,6 @@ const Episodes: React.FC = () => {
           Air Date: {air_date === '' ? 'Unknown' : air_date}
         </h5>
       </div>
-
       {isLoading ? (
         <Loader />
       ) : (
